@@ -1,11 +1,7 @@
 <%= hidden_field(:api, :id, value: @api.id) %>
-<div class="body-background">
-  <div class="row">
-    <div class="medium-8 medium-centered columns api-show text-left detail-text-medium float-center">
-      <div class="row">
         <% if @api.owner?(current_user) || current_user.try(:admin?) %>
-          <%= link_to 'Edit Your Api', edit_api_path(@api) %>
-          <%= link_to "Delete", @api, method: :delete, data: {confirm: "Really wanna delete this api?"} %>
+					<%= link_to 'Edit Your Api', edit_api_path(@api) %> <br />
+          <%= link_to 'Delete', @api, method: :delete, data: {confirm: 'Are You Sure You Want to Delete this API Listing?'} %>
         <% end %>
         <div class="medium-1 columns" style="height: 200px; padding-left: 40px; padding-top: 70px;">
           <div class = "arrow-up" id="upvote"> <%= @upvotes %> </div>
@@ -47,7 +43,4 @@
         </div>
         <% end %>
         <%= render partial: 'new_review', object: @review %>
-      </div>
-    </div>
-  </div>
   <%= javascript_include_tag "votes.js" %>

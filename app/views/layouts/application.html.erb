@@ -24,6 +24,12 @@
 				</ul>
 			</div>
 		</nav>
+		<div id="flash_messages">
+			<% flash.each do |key, value| %>
+				<%= content_tag(:div, value, class: "flash #{key}") %>
+			<% end %>
+		</div>
+
 		<%= yield %>
 
 	</body>

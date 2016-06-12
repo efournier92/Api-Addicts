@@ -72,7 +72,7 @@ class ApisController < ApplicationController
     @reviews = @api.reviews
     if @api.destroy
       @reviews.destroy
-      flash[:success] = "Api has been deleted"
+      flash[:success] = 'Posting Deleted Successfully' 
       redirect_to apis_path
     end
   end
