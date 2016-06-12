@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Api Addicts" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Api Addicts" %>">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag 'vendor/modernizr' %>
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
-  </body>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "vendor/modernizr" %>
+		<%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+
+	<body style="background-color: #9e9e9e">
+		<div class="topper">
+			<%= render 'layouts/topper' %>
+		</div>
+
+		<nav class="top-bar" data-topbar>
+			<div class="top-bar-section">
+				<ul>
+					<%= render 'layouts/navigation_links' %>
+				</ul>
+			</div>
+		</nav>
+		<%= yield %>
+
+	</body>
 </html>

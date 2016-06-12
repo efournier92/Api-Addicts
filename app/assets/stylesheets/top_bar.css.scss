@@ -1,0 +1,28 @@
+.top-bar {
+  height: 55px;
+}
+
+.top-bar-section {
+	width: 74%;
+}
+
+.top-bar-section ul li a {
+	height: 55px;
+	width: 100px;
+	font-size: 12px;
+	display: table-cell;
+	vertical-align: middle;
+	background: green;
+	text-align: center;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):not(.submit):not(.button-xs) {
+  background: #043344;
+	line-height: 150%;
+}
+
+.search-box {
+  
+}

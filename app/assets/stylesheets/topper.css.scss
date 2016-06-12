@@ -1,0 +1,44 @@
+.topper {
+	height: 39px;
+	background-color: #eaeaea;
+	color: #0076b3;
+	font-size: 26px;
+	font-style: bold;
+}
+
+.left_section {
+	position: absolute;
+	left: 0px;
+}
+
+.right_section {
+	position: absolute;
+	right: 0px;
+	margin: 0px;
+	display: flex;
+}
+
+.right_section_button {
+	top: 0px;
+  height: 39px;
+	width: 120px;
+	display: inline-block;
+	margin: 0px;
+	display: table;
+	text-align: center;
+}
+
+.right_section_button a {
+	color: #eaeaea;
+	font-size: 20px;
+	display: table-cell;
+	vertical-align: middle;
+  margin: auto;
+}
+
+.topper li {
+	height: 39px;
+	width: 50%;
+	background: green;
+	font-size: 9px;
+}

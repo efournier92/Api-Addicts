@@ -1,0 +1,22 @@
+<h3>
+	Share An API 
+</h3>
+<div class="medium-8 medium-centered columns">
+	<%= form_for Api.new do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name, id: "Name" %>
+		<%= f.label :link %>
+		<%= f.text_field :url, id: "URL" %>
+		<%= f.label :description %>
+		<%= f.text_field :description %>
+		<%= f.label :tags %>
+		<%= f.text_field :tags, value: "", id: "Tags" %>
+		<%= f.label :category %>
+		<%= f.select :category, options_for_select(Api::CATEGORIES) %>
+		<%= f.label :paid, "Free?"%>
+		<%= f.collection_radio_buttons(:paid, [[true, "Yes"], [false, "No"]], :first, :last) %> <br />
+		<div class="centered">
+			<%= f.submit "Add API", class: 'button' %>
+		</div>
+	<% end %>
+</div>
