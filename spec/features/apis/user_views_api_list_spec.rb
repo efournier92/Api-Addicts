@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-feature 'user can view a list of apis' do
+feature 'user visits API index page' do
   let!(:user)  { FactoryGirl.create(:user) }
-  let!(:api1)  do
+  let!(:api1) do
     FactoryGirl.create(:api, user: user,
-    url: 'www.apiaddict.xyz/api')
+    url: 'https://developers.google.com/youtube/')
   end
   let!(:api2) do
     FactoryGirl.create(:api, user: user, paid: true,
-    url: 'www.apiaddict.xyz/api')
+    url: 'https://developers.google.com/maps/')
   end
-  scenario 'sees a list of apis' do
+  scenario 'sees a list of all APIs' do
     visit apis_path
 
     expect(page).to have_content(api1.name)

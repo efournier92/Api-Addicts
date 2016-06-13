@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20160612230637) do
   add_index "apis", ["user_id"], name: "index_apis_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.string   "title",      null: false
     t.text     "body",       null: false
     t.integer  "rating",     null: false
     t.integer  "user_id",    null: false

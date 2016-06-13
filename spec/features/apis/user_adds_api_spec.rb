@@ -6,7 +6,7 @@ feature 'user adds a new api' do
   scenario 'visits new api page from root index' do
 		login_as(user, scope: :user)
 		visit root_path
-		click_link "SHARE AN API"
+		click_link 'SHARE AN API'
 		
 		expect(page).to have_field('Name')
     expect(page).to have_field('URL')
