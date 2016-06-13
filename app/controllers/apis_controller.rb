@@ -57,8 +57,7 @@ class ApisController < ApplicationController
     api = Api.new(api_params)
     api.user = current_user
     if api.save
-      Api.add_tags(api, params[:api][:tags])
-      flash[:success] = "New API Created!"
+      flash[:success] = 'New API Created!'
       redirect_to api_path(api)
     else
       flash[:failure] = api.errors.full_messages.join(', ')

@@ -1,18 +1,12 @@
-# Feature: Navigation links
-#   As a visitor
-#   I want to see navigation links
-#   So I can find home, sign in, or sign up
-feature 'Navigation links', :devise do
-
-  # Scenario: View navigation links
-  #   Given I am a visitor
-  #   When I visit the home page
-  #   Then I see "home," "sign in," and "sign up"
-  scenario 'view navigation links' do
+feature 'user sees navigation links', :devise do
+  
+	scenario 'all nav links visible' do
     visit root_path
-    expect(page).to have_content 'Home'
-    expect(page).to have_content 'Sign in'
-    expect(page).to have_content 'Sign up'
+    expect(page).to have_content 'SHARE AN API'
+    expect(page).to have_content 'VIEW BY CATEGORY'
+    expect(page).to have_content 'VIEW BY POPULARITY'
+    expect(page).to have_content 'SHOW RANDOM'
+    expect(page).to have_content 'ABOUT'
   end
 
 end

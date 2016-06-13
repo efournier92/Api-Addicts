@@ -27,8 +27,8 @@
           <div class="medium-9 medium-centered columns detail-text-medium <%="rating#{review.rating}"%>">
             <div class="row">
               <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
-                <%= link_to 'Edit Your Review', edit_api_review_path(@api, review) %>
-                <%= link_to "Delete Your Review", api_review_path(@api, review), method: :delete, data: {confirm: "Really wanna delete this Review?"} %>
+                <%= link_to 'Edit Review', edit_api_review_path(@api, review) %>
+                <%= link_to "Delete Review", api_review_path(@api, review), method: :delete, data: {confirm: "Really wanna delete this Review?"} %>
               <% end %>
             </div>
             <div class="row">

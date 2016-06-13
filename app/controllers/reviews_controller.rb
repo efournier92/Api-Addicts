@@ -28,6 +28,13 @@ class ReviewsController < ApplicationController
 	def edit
 		@api = Api.find(params[:api_id])
 		@review = Review.find(params[:id])
+		if @review.save
+			# ReviewMailer.new_review(@review).deliver_later
+			flash[:success] = 'Review Updated Successfully!'
+		else
+			flash[:warning] = @review.errors.full_messages.join(', ')
+			flash[:warning] += 'Review Update Failed'
+		end
 	end
 
 	def update
