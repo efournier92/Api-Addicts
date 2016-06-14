@@ -20,6 +20,8 @@ gem 'simple_form'
 group :development, :test do
   gem 'byebug'
 	gem 'poltergeist'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development do

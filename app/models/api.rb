@@ -7,7 +7,7 @@ class Api < ActiveRecord::Base
     'Food',
     'Music',
     'Geolocation',
-    'Social Networking'].freeze
+    'Networking'].freeze
 
   validates :name, presence: true
   validates :url, presence: true
@@ -34,6 +34,16 @@ class Api < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def average_rating
+    total_score = 0
+    total_reviews = self.reviews.count
+
+    rating = self.reviews.each do |review|
+      total_score += review.rating
+    end
+    total_score / total_reviews
   end
 
   def self.search(search)

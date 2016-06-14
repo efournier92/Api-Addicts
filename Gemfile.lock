@@ -129,6 +129,7 @@ GEM
       mime-types (>= 1.16, < 4)
     mailgun (0.8)
       rest-client
+    method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -152,6 +153,12 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -225,6 +232,7 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    slop (3.6.0)
     spring (1.7.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -280,6 +288,8 @@ DEPENDENCIES
   mailgun
   pg
   poltergeist
+  pry
+  pry-rails
   quiet_assets
   rails (= 4.2.6)
   rails_12factor

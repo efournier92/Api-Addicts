@@ -1,40 +1,46 @@
-<div class="body-background">
-  <div class="row" style="height: 100%;">
-    <div class="medium-6 columns trending-section">
-      <div class="large-title">
-        Trending
+<% @apis_paginated = @apis.paginate(page: params[:page], per_page: 5) %>
+
+<% @apis_paginated.each do |api| %>
+  <div class="api_frame">
+    <div class="trending_api">
+      <div class="trending_api_info">
+        <%= link_to(api.name, api_path(api)) %>
+        <%= api.url %>
       </div>
-      <% @apis_paginated = @apis.paginate(page: params[:page], per_page: 5) %>
-      <% @apis_paginated.each do |api| %>
-      <div class="small-12 columns api-listing text-left detail-text-medium float-center">
-        <div class="row">
-          <div style="padding: 10px">
-            <%= link_to(api.name, api_path(api)) %>
-            <%= api.url %>
-            <%= api.description %>
+      <div class="trending_api_rating">
+        <div class="rating_fill"></div>
+        <div class="rating">
+          <div class="rating_stars">
+            <% api.average_rating.times do %>
+              <%= '★ ' %>
+            <% end %>
+            <% (5-api.average_rating).times do %>
+              <%= '☆ ' %>
+            <% end %>
+          </div>
+          <div class="rating_score">
+            <%= "#{api.average_rating} Star Average" %>
           </div>
         </div>
       </div>
-      <% end %>
-      <%= will_paginate @apis_paginated,
-      page_links: false,
-      renderer: FoundationPagination::Rails %>
-    </div>
-    <div class="medium-6 columns categories-section">
-      <div class="large-title">
-        Categories
-      </div>
-      <div id="categories">
-        <% Api::CATEGORIES.each do |category| %>
-        <div class="small-5 columns category-listing" id="<%=category%>">
-          <div class="small-title">
-            <%= "#{category}" %>
-          </div>
-        </div>
-        <% end %>
+      <div class="trending_api_review_button">
+        <div class="review_button_fill"></div>
+        Review
       </div>
     </div>
   </div>
-</div>
+<% end %>
+<%= will_paginate @apis_paginated,
+  page_links: false,
+  renderer: FoundationPagination::Rails %>
 
 <%= javascript_include_tag "categories.js" %>
+
+<div class="categories_menu">
+Categories
+  <% Api::CATEGORIES.each do |category| %>
+    <div class="category_container">
+      <%= category %>
+    </div>
+  <% end %>
+</div>

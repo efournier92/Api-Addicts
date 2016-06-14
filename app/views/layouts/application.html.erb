@@ -24,11 +24,14 @@
 				</ul>
 			</div>
 		</nav>
-		<div id="flash_messages">
-			<% flash.each do |key, value| %>
-				<%= content_tag(:div, value, class: "flash #{key}") %>
-			<% end %>
-		</div>
+
+		<% unless flash.keys[0] == nil %>
+			<div data-alert class="alert-box">
+				<% flash.each do |key, value| %>
+					<%= content_tag(:div, value, class: "flash #{key}") %>
+				<% end %>
+			</div>
+		<% end %>
 
 		<%= yield %>
 
