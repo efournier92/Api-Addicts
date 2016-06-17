@@ -1,45 +1,46 @@
 <%= hidden_field(:api, :id, value: @api.id) %>
 
-<% if @api.owner?(current_user) || current_user.try(:admin?) %>
-	<%= link_to 'Edit API', edit_api_path(@api) %> <br />
-	<%= link_to 'Delete API', @api, method: :delete, data: {confirm: 'Are You Sure You Want to Delete this API?'} %>
-<% end %>
-
-<h3>
-	<%= @api.name %> <br />
-	<%= link_to @api.url, @api.url %>
-</h3>
-
-<h4>
-	<%= @api.description %>
-</h4>
-
-<p>
-	<%= "Posted By: #{@api.user.name}" %> <br />
-	<%= "Posted On: #{@api.created_at.strftime("%m-%d-%Y")}" %>
-</p>
-
-<h4>
-	Reviews
-</h4>
-
-<% @reviews.each do |review|%>
-	<h5>
-		<%= "#{review.api.user.name} Says" %>
-	</h5>
-
-	<p>
-	<b>Rating:</b> <%= review.rating %>
-		<%= review.body %>
-	</p>
-	<% if review.review_owner?(current_user) || current_user.try(:admin?) %>
-		<%= link_to 'Edit Review', edit_api_review_path(@api, review) %> <br />
-		<%= link_to 'Delete Review', api_review_path(@api, review), method: :delete, data: {confirm: 'Really wanna delete this Review?'} %>
-	<% end %>
-<% end %>
-<%= render partial: 'new_review', object: @review %>
-<%= javascript_include_tag "votes.js" %>
-<div class = "arrow-up" id="upvote"> <%= @upvotes %> </div>
-<div class = "arrow-down" id="downvote"> <%= @downvotes %> </div>
-
-
+<div class="page_content">
+  <% if @api.owner?(current_user) || current_user.try(:admin?) %>
+  	<%= link_to 'Edit API', edit_api_path(@api), class: 'small button' %> <br />
+    <%= link_to 'Delete API', @api, method: :delete, class: 'small button', data: {confirm: 'Are You Sure You Want to Delete this API?'} %>
+  <% end %>
+  
+  <h3>
+  	<%= @api.name %> <br />
+  	<%= link_to @api.url, @api.url %>
+  </h3>
+  
+  <h4>
+  	<%= @api.description %>
+  </h4>
+  
+  <p>
+  	<%= "Posted By: #{@api.user.name}" %> <br />
+  	<%= "Posted On: #{@api.created_at.strftime("%m-%d-%Y")}" %>
+  </p>
+  
+  <h4>
+  	Reviews
+  </h4>
+  
+  <% @reviews.each do |review|%>
+  	<h5>
+  		<%= "#{review.api.user.name} Says" %>
+  	</h5>
+  
+  	<p>
+  	<b>Rating:</b> <%= review.rating %>
+  		<%= review.body %>
+  	</p>
+  	<% if review.review_owner?(current_user) || current_user.try(:admin?) %>
+  		<%= link_to 'Edit Review', edit_api_review_path(@api, review) %> <br />
+  		<%= link_to 'Delete Review', api_review_path(@api, review), method: :delete, data: {confirm: 'Really wanna delete this Review?'} %>
+  	<% end %>
+  <% end %>
+  <%= render partial: 'new_review', object: @review %>
+  <%= javascript_include_tag "votes.js" %>
+  <div class = "arrow-up" id="upvote"> <%= @upvotes %> </div>
+  <div class = "arrow-down" id="downvote"> <%= @downvotes %> </div>
+  
+</div>

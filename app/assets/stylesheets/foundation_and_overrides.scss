@@ -960,15 +960,15 @@ $alert-color: $primary-color;
 // $pagination-margin: rem-calc(-5);
 
 // We use these to set the list-item properties
-// $pagination-li-float: $default-float;
+$pagination-li-float: center;
 // $pagination-li-height: rem-calc(24);
-// $pagination-li-font-color: $jet;
+$pagination-li-font-color: black;
 // $pagination-li-font-size: rem-calc(14);
-// $pagination-li-margin: rem-calc(5);
+$pagination-li-margin: auto;
 
 // We use these for the pagination anchor links
-// $pagination-link-pad: rem-calc(1 10 1);
-// $pagination-link-font-color: $aluminum;
+$pagination-link-pad: rem-calc(1 10 1);
+$pagination-link-font-color: black;
 // $pagination-link-active-bg: scale-color($white, $lightness: -10%);
 
 // We use these for disabled anchor links

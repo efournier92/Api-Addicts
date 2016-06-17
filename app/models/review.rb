@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+
   belongs_to :user
   belongs_to :api
 
@@ -14,4 +15,5 @@ class Review < ActiveRecord::Base
       false
     end
   end
+
 end

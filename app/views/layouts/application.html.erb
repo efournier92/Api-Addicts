@@ -2,17 +2,19 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900,100' rel='stylesheet' type='text/css'>
+		<title><%= content_for?(:title) ? yield(:title) : 'API Addicts' %></title>
 
-		<title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
-		<%= stylesheet_link_tag    "application" %>
-		<%= javascript_include_tag "vendor/modernizr" %>
-		<%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag    'application' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'vendor/modernizr' %>
+		<%= javascript_include_tag 'categories' %>
+		<%= javascript_include_tag 'votes' %>
 		<%= csrf_meta_tags %>
 	</head>
 
-	<body style="background-color: #9e9e9e">
+	<body>
 		<div class="topper">
 			<%= render 'layouts/topper' %>
 		</div>

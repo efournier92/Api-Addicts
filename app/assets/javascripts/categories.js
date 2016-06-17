@@ -1,4 +1,4 @@
-window.onload = init();
+document.addEventListener('DOMContentLoaded', init, false);
 var category;
 function init(){
   var categories = $('#categories').children();

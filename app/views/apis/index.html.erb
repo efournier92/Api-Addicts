@@ -4,43 +4,53 @@
   <div class="api_frame">
     <div class="trending_api">
       <div class="trending_api_info">
-        <%= link_to(api.name, api_path(api)) %>
-        <%= api.url %>
+        <div style="font-weight: 700;">
+          <%= link_to(api.name, api_path(api)) %> <br />
+        </div>
+        <div style="font-weight: 400;">
+          <%= link_to(api.url, api.url) %>
+        </div>
+        <span style="font-weight: 700;">Category:</span> <%= api.category %>
       </div>
       <div class="trending_api_rating">
         <div class="rating_fill"></div>
         <div class="rating">
           <div class="rating_stars">
-            <% api.average_rating.times do %>
-              <%= '★ ' %>
-            <% end %>
-            <% (5-api.average_rating).times do %>
-              <%= '☆ ' %>
-            <% end %>
+            <% unless api.average_rating == 0 %>
+              <%= api.print_stars(api.average_rating) %>
           </div>
           <div class="rating_score">
             <%= "#{api.average_rating} Star Average" %>
+            <% else %>
+              <%= 'No Reviews Yet' %>
+            <% end %>
           </div>
         </div>
       </div>
       <div class="trending_api_review_button">
         <div class="review_button_fill"></div>
-        Review
+        Review Now
       </div>
     </div>
   </div>
 <% end %>
+
+<div class="pagination-centered pagination_links">
 <%= will_paginate @apis_paginated,
   page_links: false,
-  renderer: FoundationPagination::Rails %>
+  next_label:     image_tag('arrow_next.png', size: '50'),
+  previous_label: image_tag('arrow_back.png', size: '50') %>
+</div>
 
 <%= javascript_include_tag "categories.js" %>
 
-<div class="categories_menu">
-Categories
+
+    <div class="categories_menu" id="categories">
   <% Api::CATEGORIES.each do |category| %>
-    <div class="category_container">
+    <div class="category_container" id="<%=category%>">
       <%= category %>
     </div>
   <% end %>
 </div>
+
+<%= javascript_include_tag "categories.js" %>

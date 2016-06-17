@@ -1,4 +1,5 @@
 class Vote < ActiveRecord::Base
+
   belongs_to :api
   belongs_to :user
 
@@ -8,4 +9,5 @@ class Vote < ActiveRecord::Base
     @downvotes = Votes.where(user_vote: false, api: @api).count
     { upvotes: @upvotes, downvotes: @downvotes }
   end
+
 end
