@@ -1,11 +1,8 @@
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name"><%= link_to 'Home', root_path %></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
-  <div class="top-bar-section">
-    <ul>
+  <section class="top-bar-section">
       <%= render 'layouts/navigation_links' %>
-    </ul>
-  </div>
+  </section>
 </nav>

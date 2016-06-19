@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', init, false);
+window.onload = init();
 var category;
 function init(){
   var categories = $('#categories').children();
@@ -16,11 +16,19 @@ function changeApis() {
 
   request.done(function(data) {
     destroyCurrent();
-    $('.trending-section').append( "<div class='large-title'>" + category + "</div>" );
-    $('.trending-section').append(data)
+    $('.trending_api').append( "<div class='large-title'>" + category + "</div>" );
+    $('.trending_api_info').append(data)
   });
 }
 
 function destroyCurrent(){
-  $('.trending-section').children().remove();
+  $('.trending_api_info').children().remove();
+  $('.trending_api_rating').children().remove();
 }
+$('button').toggle(
+
+function() {
+    $('#B').css('left', '0');
+}, function() {
+    $('#B').css('left', '200px');
+});

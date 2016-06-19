@@ -1,4 +1,4 @@
 en:
   will_paginate:
-        previous_label: <span class="my-older-post"><img src="/images/arrow_back.png" /></span>
-              next_label: <span class="my-newer-post"><img src="/images/post.png" /></span>
+    previous_label: <span class="my-older-post"><img src="/images/arrow_back.png" /></span>
+    next_label: <span class="my-newer-post"><img src="/images/post.png" /></span>

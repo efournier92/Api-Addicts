@@ -1,6 +1,5 @@
 module Api::V1
   class ApiController < ApplicationController
-
     def change
       @apis = Api.where(category: params[:category])
 

@@ -66,12 +66,7 @@ class Api < ActiveRecord::Base
       stars
     end
 
-    def self.search(search)
-      results = []
-      tags = Tag.search(search)
-      results += where("name LIKE ?", "%#{search}%")
-      results += where("description LIKE ?", "%#{search}%")
-      results += where("url LIKE ?", "%#{search}%")
-      results.uniq { |api| api.id }
-    end
+  def self.search(query)
+    results = Api.where("name LIKE ? OR description LIKE ? OR url LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
+  end
 end

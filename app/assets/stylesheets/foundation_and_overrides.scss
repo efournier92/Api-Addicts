@@ -550,7 +550,7 @@ $alert-color: $primary-color;
 // $f-dropdown-margin-bottom: $f-dropdown-margin-top;
 
 // We use this to control the background color
-// $f-dropdown-bg: $white;
+$f-dropdown-bg: green;
 
 // We use this to set the border styles for dropdowns.
 // $f-dropdown-border-style: solid;
@@ -558,7 +558,7 @@ $alert-color: $primary-color;
 // $f-dropdown-border-color: scale-color($white, $lightness: -20%);
 
 // We use these to style the triangle pip.
-// $f-dropdown-triangle-size: 6px;
+$f-dropdown-triangle-size: 19px;
 // $f-dropdown-triangle-color: $white;
 // $f-dropdown-triangle-side-offset: 10px;
 
@@ -1435,7 +1435,7 @@ $topbar-bg-color: #043344;
 // $topbar-button-top: 7px;
 
 // Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
+$topbar-dropdown-bg: #043344;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
 // $topbar-dropdown-link-bg: $oil;
@@ -1464,8 +1464,8 @@ $topbar-bg-color: #043344;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+$topbar-breakpoint: 0px; 
+// $topbar-media-query: "(min-width:600px)";
 
 // Top-bar input styles
 // $topbar-input-height: rem-calc(28);
