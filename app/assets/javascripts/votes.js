@@ -1,34 +1,14 @@
 window.onload = init();
-var id;
 
-function init(){
-  document.getElementById("upvote").addEventListener("click", upVote);
-  document.getElementById("downvote").addEventListener("click", downVote);
-  id = $("#api_id").val();
-}
+$('#topic').upvote();
 
-function upVote() {
-  var request = $.ajax({
-    method: "GET",
-    url: "/v1/upvote",
-    data: { api_id: id }
-  });
+var callback = function(data) {
+    $.ajax({
+        url: '/upvote',
+        type: 'post',
+        data: { id: data.id, up: data.upvoted, down: data.downvoted, star: data.starred }
+    });
+};
 
-  request.done(function(data) {
-    document.getElementById("upvote").textContent = data.upvotes;
-    document.getElementById("downvote").textContent = data.downvotes;
-  });
-}
+$('#topic-123').upvote({id: 123, callback: callback});
 
-function downVote() {
-  var request = $.ajax({
-    method: "GET",
-    url: "/v1/downvote",
-    data: { api_id: id }
-  });
-
-  request.done(function(data) {
-    document.getElementById("upvote").textContent = data.upvotes;
-    document.getElementById("downvote").textContent = data.downvotes;
-  });
-}
