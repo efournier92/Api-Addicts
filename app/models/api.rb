@@ -1,4 +1,12 @@
 class Api < ActiveRecord::Base
+  belongs_to :user
+  has_many   :reviews, dependent: :destroy
+
+  validates :name, presence: true
+  validates :url, presence: true
+  validates :name, uniqueness: { scope: :url }
+  validates :description, presence: true
+
   CATEGORIES = [
     'News',
     'Sports',
@@ -7,17 +15,8 @@ class Api < ActiveRecord::Base
     'Food',
     'Music',
     'Geolocation',
-    'Financial'].freeze
-
-    validates :name, presence: true
-    validates :url, presence: true
-    validates :name, uniqueness: { scope: :url }
-    validates :description, presence: true
-
-    belongs_to :user
-    has_many :reviews, dependent: :destroy
-    has_many :api_tags, dependent: :destroy
-    has_many :tags, through: :api_tags
+    'Financial' 
+  ]
 
     def self.add_tags(api, tags)
       tags.each do |tag|
@@ -66,7 +65,7 @@ class Api < ActiveRecord::Base
       stars
     end
 
-  def self.search(query)
-    results = Api.where("name LIKE ? OR description LIKE ? OR url LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
-  end
+    def self.search(query)
+      results = Api.where("name LIKE ? OR description LIKE ? OR url LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%")
+    end
 end

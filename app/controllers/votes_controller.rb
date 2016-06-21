@@ -1,7 +1,7 @@
 class VotesController < ApiController
   before_filter :authenticate_user!
 
-  def vote
+  def upvote
     review = params[:review_id]
     user_vote = Votes.find_by(user: current_user, review: review)
 
@@ -15,18 +15,20 @@ class VotesController < ApiController
     end
   end
 
-  def downvote
-    user = current_user.id
-    found_vote = Votes.find_by(user: user, api: params[:api_id])
-
-    if found_vote == nil
-      create_vote(params[:api_id], user, false)
-      render json: Votes.calculate_votes(params[:api_id])
-      return
-    else
-      flip_vote(found_vote)
-      render json: Votes.calculate_votes(params[:api_id])
-    end
+  def create(review_id, user_id, up_vote?)
+    Votes.create(
+      user:     User.find(user_id),
+      review:   Review.find(review_id),
+      up_vote?: vote_bool
+    )
   end
-end
+
+  def update(review_id, user_id, up_vote?)
+    vote = Vote.where(
+      user: User.find(user_id)
+      review: Review.find(review_id)
+    )
+    vote.up_vote? = up_vote?
+    vote.save
+  end
 end
