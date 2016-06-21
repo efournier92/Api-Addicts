@@ -16,4 +16,10 @@ class Review < ActiveRecord::Base
     end
   end
 
+  def calculate_votes
+    upvotes   = Votes.where(user_vote: true, review: @review).count
+    downvotes = Votes.where(user_vote: false, api: @review).count
+    results   = {score: upvotes - downvotes, total: upvotes + downvotes}
+  end
+
 end

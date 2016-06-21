@@ -1,13 +1,25 @@
 class Vote < ActiveRecord::Base
 
-  belongs_to :api
+  belongs_to :review
   belongs_to :user
 
-  def self.calculate_votes(api_id)
-    @api = Api.find(api_id)
-    @upvotes = Votes.where(user_vote: true, api: @api).count
-    @downvotes = Votes.where(user_vote: false, api: @api).count
-    { upvotes: @upvotes, downvotes: @downvotes }
-  end
+  
+    def create(review_id, user_id, up_or_down)
+      Votes.create(
+        user: User.find(user_id),
+        review: Review.find(review_id),
+        user_vote: up_or_down)
+    end
 
+    def update(review_id, user_id, up_or_down)
+
+
+    def flip_vote(vote)
+      if vote.user_vote
+        vote.user_vote = false
+      else
+        vote.user_vote = true
+      end
+      vote.save
+    end
 end

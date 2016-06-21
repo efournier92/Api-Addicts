@@ -12,8 +12,8 @@ class ApisController < ApplicationController
   end
 
   def random
-    @api = Api.all.sample
-    @review = Review.new
+    @api     = Api.all.sample
+    @review  = Review.new
     @reviews = @api.reviews
     render :show
   end
@@ -27,11 +27,12 @@ class ApisController < ApplicationController
   end
 
   def show
-    @api = Api.find(params[:id])
-    @review = Review.new
-    @reviews = @api.reviews
-    @upvotes = Vote.where(user_vote: true, api: @api).count
-    @downvotes = Vote.where(user_vote: false, api: @api).count
+    @api        = Api.find(params[:id])
+    @review     = Review.new
+    @reviews    = @api.reviews
+    @upvotes    = Vote.where(user_vote: true, api: @api).count
+    @downvotes  = Vote.where(user_vote: false, api: @api).count
+    @vote_score = @upvotes - @downvotes
   end
 
   def edit
@@ -43,9 +44,9 @@ class ApisController < ApplicationController
     @api = Api.find(params[:id])
     if @api.update(api_params)
       redirect_to api_path(@api)
-      flash[:success] = "Api Updated!"
+      flash[:success] = 'Api Updated!'
     else
-      flash[:failure] = "Api Not Updated!"
+      flash[:failure] = 'Api Not Updated!'
       render :edit
     end
   end
@@ -56,11 +57,11 @@ class ApisController < ApplicationController
     api.user = current_user
     if api.save
       Api.add_tags(api, params[:api][:tags])
-      flash[:success] = "New API Created!"
+      flash[:success] = 'New API Created!'
       redirect_to api_path(api)
     else
       flash[:failure] = api.errors.full_messages.join(', ')
-      flash[:failure] += ". API Not Created."
+      flash[:failure] += '. API Not Created.'
       render :new
     end
   end
@@ -70,7 +71,7 @@ class ApisController < ApplicationController
     @reviews = @api.reviews
     if @api.destroy
       @reviews.destroy
-      flash[:success] = "Api has been deleted"
+      flash[:success] = 'API Deleted'
       redirect_to apis_path
     end
   end

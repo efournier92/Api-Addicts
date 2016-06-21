@@ -1,14 +1,19 @@
 $('#topic').upvote();
+$('#topic').upvote({count: 5, upvoted: 1});
+$('#topic').upvote({count: 5, downvoted: 1});
+$('#topic').upvote({count: 5, upvoted: 1, starred: 1});
 
 var callback = function(data) {
     $.ajax({
-        url: '/v1/upvote',
+        url: '/vote',
         type: 'post',
-        data: { api_id: id }
+        data: { id: data.id, up: data.upvoted, down: data.downvoted, star: data.starred }
     });
 };
 $('#topic-123').upvote({id: 123, callback: callback});
 
+
+// $('#topic-123').upvote({id: 123, callback: callback});
 // function init(){
 //   document.getElementById("upvote").addEventListener("click", upVote);
 //   document.getElementById("downvote").addEventListener("click", downVote);
@@ -40,3 +45,15 @@ $('#topic-123').upvote({id: 123, callback: callback});
 //     document.getElementById("downvote").textContent = data.downvotes;
 //   });
 // }
+// $('#topic').upvote();
+
+// var callback = function(data) {
+//     $.ajax({
+//         url: '/upvote',
+//         type: 'post',
+//         data: { id: data.id, up: data.upvoted, down: data.downvoted, star: data.starred }
+//     });
+// };
+
+// $('#topic-123').upvote({id: 123, callback: callback});
+
