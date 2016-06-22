@@ -7,7 +7,26 @@
   min-height: 20%;
 }
 
+.review_container {
+  width: 100%;
+  background-color: #cacaca;
+  margin-bottom: 15px;
+}
+
+.upvote {
+  text-align: left;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.review_content {
+  display: inline-block;
+}
+
 .review_crud_buttons {
+}
+
+.review_body {
   display: inline-block;
 }
 
@@ -17,12 +36,12 @@
 }
 
 .api_description {
-  background-color: #878787;
+  background-color: #cacaca;
 }
 
 .posted_by {
   min-width: 100%;
-  background-color: #878787;
+  background-color: #cacaca;
 }
 
 .link a {

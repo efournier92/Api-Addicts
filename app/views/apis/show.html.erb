@@ -3,7 +3,7 @@
   <div class="api_info">
     <% if @api.owner?(current_user) || current_user.try(:admin?) %>
       <%= link_to 'Edit API', edit_api_path(@api), class: 'small button' %> <br />
-      <%= link_to 'Delete API', @api, method: :delete, class: 'small button', data: {confirm: 'Are You Sure You Want to Delete this API?'} %>
+      <%= link_to 'Delete API', @api, method: :delete, class: 'small button', data: { confirm: 'Are You Sure You Want to Delete this API?' } %>
     <% end %>
 
     <div class="posted_by">
@@ -31,33 +31,40 @@
 
     <h4>Reviews</h4>
     <% @reviews.each do |review|%>
-      <div id="topic" class="upvote">
-        <% upvote_path = upvote_api_review_path(@api, review).to_s %> 
-        <a id="up_vote" class="upvote" data-path="<%= upvote_path %>"></a>
-        <span class="count"><%= @vote_score %></span>
-        <% downvote_path = downvote_api_review_path(@api, review).to_s %> 
-        <a id="down_vote" class="downvote" data-path="<%= downvote_path %>"></a>
-      </div>
-      <h5>
-        <%= "#{review.api.user.first_name} Says" %>
-      </h5>
+      <div class="review_container">
+        <% upvote_path   = upvote_api_review_path(@api, review).to_s %> 
+        <% downvote_path = downvote_api_review_path(@api, review).to_s %>
+        <% vote_score    = review.calculate_votes(review.id) %>
 
-      <p>
-      <b>Rating:</b> <%= review.rating %>
-    <%= review.body %>
-      </p>
-      <div class="review_crud_buttons">
-        <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
-          <%= link_to 'Edit Review', edit_api_review_path(@api, review) %> 
-          <%= link_to 'Delete Review', api_review_path(@api, review),
-            method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
-        <% end %>
+        <div class="review_body">
+        <div class="upvote">
+          <a id="up_vote" class="upvote" data-path="<%= upvote_path %>"></a>
+          <span class="count"><%= vote_score[:score] %></span>
+          <a id="down_vote" class="downvote" data-path="<%= downvote_path %>"></a>
+        </div>
+          <div class="review_content">
+          <div class="review_crud_buttons">
+            <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
+              <%= link_to 'Edit Review', edit_api_review_path(@api, review) %> 
+              <%= link_to 'Delete Review', api_review_path(@api, review),
+                method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
+            <% end %>
+          </div>
+          
+          <h5>
+            <%= "#{review.api.user.first_name} Says" %>
+          </h5>
+          
+          <p>
+          <b>Rating:</b> <%= review.rating %> <br />
+          <b>Reason:</b> <%= review.body %>
+          </p>
+        </div>
+        </div>
+
       </div>
     <% end %>
   </div>
-
-</div>
-
 </div>
 <%= javascript_include_tag 'votes' %>
 <%= javascript_include_tag 'jquery-upvote' %>

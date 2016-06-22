@@ -1,14 +1,21 @@
 $(document).ready(init);
-$('#topic').upvote();
+$('.upvote').upvote();
 
-function init(){
-  document.getElementById("up_vote").addEventListener("click", upVote);
-  document.getElementById("down_vote").addEventListener("click", downVote);
+
+function init() {
+  var upVotes = $(".upvote.upvote")
+  var downVotes = $(".upvote.downvote")
+
+   for(var i=0; i < upVotes.length; i+=1) {
+      upVotes[i].addEventListener("click", upVote)
+   };
+   for(var i=0; i < downVotes.length; i+=1) {
+      downVotes[i].addEventListener("click", downVote)
+   };
 };
 
 function upVote() {
-  var get_path = document.getElementById("up_vote");
-  var path = get_path.getAttribute("data-path");
+  var path = this.getAttribute("data-path");
   var request = $.ajax({
     method: "post",
     url: path 
@@ -16,8 +23,7 @@ function upVote() {
 }
 
 function downVote() {
-  var get_path = document.getElementById("down_vote");
-  var path = get_path.getAttribute("data-path");
+  var path = this.getAttribute("data-path");
   var request = $.ajax({
     method: "post",
     url: path 
