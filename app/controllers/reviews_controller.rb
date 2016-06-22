@@ -9,20 +9,27 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def upvote
+    api    = params[:api_id]
+    review = params[:id]
+    user   = current_user.id
+   Vote.create(api_id: api, user_id: user, review_id: review, up_vote?: true) 
+    redirect_to(api_path(api))
+  end
+
   def create
-    api = Api.find(params[:api_id])
+    @api = Api.find(params[:api_id])
     @review = Review.new(review_params)
     @review.user = current_user
-    @review.api = api
-
+    @review.api_id = @api.id
+    
     if @review.save
-      # ReviewMailer.new_review(@review).deliver_later
       flash[:success] = 'Review Submitted Successfully!'
     else
       flash[:warning] = @review.errors.full_messages.join(', ')
       flash[:warning] += 'Review Submission Failure'
     end
-    redirect_to api_path(api)
+    redirect_to api_path(@api)
   end
 
   def edit

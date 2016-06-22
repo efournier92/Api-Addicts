@@ -1,0 +1,30 @@
+$('#topic').upvote();
+
+$(document).ready(init);
+
+<%# function init(){ %>
+  document.getElementById("up_vote").addEventListener("click", upVote);
+  <%# document.getElementById("down_vote").addEventListener("click", downVote); %>
+<%#   id = $("#api_id").val(); %>
+<%# }; %>
+
+<%# $('#up_vote').addEventListener("click", function() { %>
+<%#   $.ajax({ %>
+<%#     method: "post", %>
+<%#     url: $(this).attr('ajax_path'), %>  
+<%#     data: { }, %>
+<%#     async: true %>
+<%#   }); %>
+<%#   return false; %>
+<%# }); %>
+
+
+function upVote() {
+  var get_path = document.getElementById("up_vote");
+  var path = get_path.getAttribute("data-path");
+  var request = $.ajax({
+    method: "post",
+    url: path 
+  });
+}
+

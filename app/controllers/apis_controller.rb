@@ -30,9 +30,15 @@ class ApisController < ApplicationController
     @api        = Api.find(params[:id])
     @review     = Review.new
     @reviews    = @api.reviews
-    @upvotes    = Vote.where(user_vote: true, api: @api).count
-    @downvotes  = Vote.where(user_vote: false, api: @api).count
-    @vote_score = @upvotes - @downvotes
+    # @upvotes    = Vote.where(up_vote?: true,  api: @api).count
+    # @downvotes  = Vote.where(up_vote?: false, api: @api).count
+    # @vote_score = @upvotes - @downvotes
+  end
+
+  def upvote
+    api    = Api.find(params[:id])
+    api.votes.create
+    redirect_to(api_path)
   end
 
   def edit

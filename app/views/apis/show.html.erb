@@ -19,17 +19,7 @@
         <%= @api.description %>
       </div>
   </div>
-
-  <div class="medium-1 columns" style="height: 200px; padding-left: 40px; padding-top: 70px;">
-    <div class = "arrow-up" id="upvote"> <%= @upvotes %> </div>
-    <div class = "arrow-down" id="downvote"> <%= @downvotes %> </div>
-  </div>
-
-  <div id="topic" class="upvote">
-    <a class="upvote"></a>
-    <span class="count"><%=@vote_score%></span>
-    <a class="downvote"></a>
-  </div>
+  
 
   <div class="review">
     <h4>Review Now</h4>
@@ -43,22 +33,34 @@
     </h4>
 
     <% @reviews.each do |review|%>
-      <h5>
-        <%= "#{review.api.user.first_name} Says" %>
-      </h5>
+      
+      <div>
 
-      <p>
-      <b>Rating:</b> <%= review.rating %>
-    <%= review.body %>
-      </p>
-      <div class="review_crud_buttons">
-        <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
-          <%= link_to 'Edit Review', edit_api_review_path(@api, review) %> 
-          <%= link_to 'Delete Review', api_review_path(@api, review),
-            method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
-        <% end %>
-      </div>
-    <% end %>
+
+    <div id="topic" class="upvote">
+      <%path = upvote_api_review_path(@api, review).to_s%> 
+      <%=binding.pry%>
+      <a id="up_vote" class="upvote" data-path="<%=path%>"></a>
+      <span class="count"><%=@vote_score%></span>
+      <a id="<%=review.id%>"class="downvote"></a>
+    </div>
+        <h5>
+          <%= "#{review.api.user.first_name} Says" %>
+        </h5>
+    
+        <p>
+        <b>Rating:</b> <%= review.rating %>
+      <%= review.body %>
+        </p>
+        <div class="review_crud_buttons">
+          <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
+            <%= link_to 'Edit Review', edit_api_review_path(@api, review) %> 
+            <%= link_to 'Delete Review', api_review_path(@api, review),
+              method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
 
   </div>
 

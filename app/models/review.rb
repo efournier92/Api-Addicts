@@ -6,7 +6,7 @@ class Review < ActiveRecord::Base
   validates :body, presence: true
   validates :rating, inclusion: {in: [1, 2, 3, 4, 5]}
   validates :user_id, presence: true
-  validates :review_id, presence: true
+  validates :api_id, presence: true
 
   def review_owner?(user)
     if self.user == user
