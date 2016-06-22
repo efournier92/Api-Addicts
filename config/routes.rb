@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
     resources :reviews, only: [:index, :new, 
                                :create, :edit, :update, :destroy] do
-    member do
-      post 'upvote'
-    end
+      member do
+        post 'upvote'
+        post 'downvote'
+      end
     end
   end
-
   resources :users, only: [:index, :show, :destroy]
 end

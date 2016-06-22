@@ -17,6 +17,14 @@ class ReviewsController < ApplicationController
     redirect_to(api_path(api))
   end
 
+  def downvote
+    api    = params[:api_id]
+    review = params[:id]
+    user   = current_user.id
+   Vote.create(api_id: api, user_id: user, review_id: review, up_vote?: false) 
+    redirect_to(api_path(api))
+  end
+
   def create
     @api = Api.find(params[:api_id])
     @review = Review.new(review_params)
@@ -62,40 +70,6 @@ class ReviewsController < ApplicationController
       flash[:success] = "Review has been deleted"
       redirect_to apis_path
     end
-  end
-
-  def vote
-    user_vote = Votes.find_by(user: current_user, review: params[:review_id])
-
-    if user_vote == nil
-      create_vote(params[:api_id], user, true)
-      render json: Votes.calculate_votes(params[:review_id])
-      return
-    else
-      flip_vote(user_vote)
-      render json: Votes.calculate_votes(params[:review_id])
-    end
-  end
-
-  def downvote
-    user = current_user.id
-    found_vote = Votes.find_by(user: user, api: params[:api_id])
-
-    if found_vote == nil
-      create_vote(params[:api_id], user, false)
-      render json: Votes.calculate_votes(params[:api_id])
-      return
-    else
-      flip_vote(found_vote)
-      render json: Votes.calculate_votes(params[:api_id])
-    end
-  end
-
-  def create_vote(api_id, user_id, vote_bool)
-    Votes.create(
-      user: User.find(user_id),
-      api: Api.find(api_id),
-      user_vote: vote_bool)
   end
 
   def flip_vote(vote)
