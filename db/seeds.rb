@@ -1,5 +1,3 @@
-puts 'CREATED ADMIN USER: ' << user.email
-
 User.create!(
   first_name:            'Mike',
   last_name:             'Fletcher',
