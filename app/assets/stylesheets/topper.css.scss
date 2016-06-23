@@ -6,19 +6,19 @@
 	font-style: bold;
 }
 
-.left_section {
+.left-section {
 	position: absolute;
 	left: 0px;
 }
 
-.right_section {
+.right-section {
 	position: absolute;
 	right: 0px;
 	margin: 0px;
 	display: flex;
 }
 
-.right_section_button {
+.right-section-button {
 	top: 0px;
   height: 39px;
 	width: 120px;
@@ -28,7 +28,7 @@
 	text-align: center;
 }
 
-.right_section_button a {
+.right-section-button a {
 	color: #eaeaea;
 	font-size: 20px;
 	display: table-cell;

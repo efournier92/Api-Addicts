@@ -4,58 +4,27 @@ class ApisController < ApplicationController
   def index
     if params[:search]
       @apis = Api.search(params[:search])
-    elsif params[:category] != nil
-      @apis = Api.where(category: params[:category])
+    elsif params[:cat] != nil
+      @apis = Api.where(category: params[:cat])
     else
       @apis = Api.all.order('created_at DESC')
     end
-  end
-
-  def random
-    @api     = Api.all.sample
-    @review  = Review.new
-    @reviews = @api.reviews
-    render :show
-  end
-
-  def about
-    render :about
-  end
-
-  def new
-    @api = Api.new
   end
 
   def show
     @api        = Api.find(params[:id])
     @review     = Review.new
     @reviews    = @api.reviews
-    # @upvotes    = Vote.where(up_vote?: true,  api: @api).count
-    # @downvotes  = Vote.where(up_vote?: false, api: @api).count
-    # @vote_score = @upvotes - @downvotes
-  end
-
-  def upvote
-    api    = Api.find(params[:id])
-    api.votes.create
-    redirect_to(api_path)
   end
 
   def edit
     @api = Api.find(params[:id])
   end
 
-  def update
-    params[:api][:tags] = params[:api][:tags].split(',')
-    @api = Api.find(params[:id])
-    if @api.update(api_params)
-      redirect_to api_path(@api)
-      flash[:success] = 'Api Updated!'
-    else
-      flash[:failure] = 'Api Not Updated!'
-      render :edit
-    end
+  def new
+    @api = Api.new
   end
+
 
   def create
     params[:api][:tags] = params[:api][:tags].split(',')
@@ -72,6 +41,18 @@ class ApisController < ApplicationController
     end
   end
 
+  def update
+    params[:api][:tags] = params[:api][:tags].split(',')
+    @api = Api.find(params[:id])
+    if @api.update(api_params)
+      redirect_to api_path(@api)
+      flash[:success] = 'Api Updated!'
+    else
+      flash[:failure] = 'Api Not Updated!'
+      render :edit
+    end
+  end
+
   def destroy
     @api = Api.find(params[:id])
     @reviews = @api.reviews
@@ -80,6 +61,10 @@ class ApisController < ApplicationController
       flash[:success] = 'API Deleted'
       redirect_to apis_path
     end
+  end
+
+  def about
+    render :about
   end
 
   private

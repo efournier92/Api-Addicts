@@ -2,25 +2,32 @@
  *= require_tree .
  *= require_self
  //= require foundation_and_overrides
- */
+*/
 
 body {
-	background-color: #b9b9b9;
+  background-color: #b9b9b9;
   font-family: 'Roboto', sans-serif;
 }
 
 h3 {
-	color: #252525;
+  color: #252525;
   text-align: left;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
 }
 
 .centered {
-	text-align: center;
-	margin: auto;
+  text-align: center;
+  margin: auto;
 }
 
 .page_content {
   padding: 10px;
+}
+
+.new_api_title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
 }

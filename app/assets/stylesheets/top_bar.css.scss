@@ -3,6 +3,10 @@
   height: 55px;
 }
 
+.top-bar-section .dropdown li .js-generated{
+    display: none !important;
+}
+
 .top-bar a {
   background-color: #043344 !important;
   text-align: center;
@@ -21,7 +25,6 @@ li.has-form {
   padding: 0px !important;
 }
 
-
 .top-bar a:hover {
   background-color: #042c3b !important;
 }
@@ -33,10 +36,6 @@ li.has-form {
   font-size: 16px;
 }
 
-.has-dropdown a {
-  background-color: green;
-}
-
 .has-form {
   position: absolute;
   right: 0;
@@ -46,7 +45,12 @@ li.has-form {
   padding-right: .5em;
 }
 
-.has-form input {
+.has-dropdown {
+  width: 136px;
+}
+
+ul.dropdown li a {
+  width: 136px;
 }
 
 .submit-button {

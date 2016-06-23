@@ -14,8 +14,8 @@ class Api < ActiveRecord::Base
     'Events',
     'Food',
     'Music',
-    'Geolocation',
-    'Financial' 
+    'Financial',
+    'Geolocation'
   ]
 
     def self.add_tags(api, tags)

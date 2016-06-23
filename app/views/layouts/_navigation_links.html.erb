@@ -3,43 +3,31 @@
     <a href="#">Menu</a>
     <ul class="dropdown">
       <li><%= link_to 'Add An API', new_api_path %></li>
-      <li><%= link_to 'Most Popular', page_path('about') %></li>
-      <li><%= link_to 'Show Random', page_path('about') %></li>
-      <li><%= link_to 'About', page_path('about') %></li>
+      <li><%= link_to 'Show Random', api_path(Api.all.sample) %></li>
+      <li><%= link_to 'About Us', page_path('about') %></li>
     </ul>
-  <li class="has-dropdown">
-    <a href="#">Categories</a>
-    <ul class="dropdown">
-      <% Api::CATEGORIES.each do |category| %>
-        <li><%= link_to "#{category}", apis_path(cat: "#{category}")%></li>
-    <% end %>
-    </ul>
-  </li>
 
-  <li class="has-form">
-    <div class="row collapse">
-      <div class="large-8 small-9 columns" >
-            <%= form_tag(apis_path, method: 'get', id: 'search-form') do %>
-              <%= text_field_tag :search, params[:search],
-                placeholder: 'Search', id: 'search-field' %>
+    <li class="has-dropdown">
+      <a href="#">Categories</a>
+      <ul class="dropdown">
+        <% Api::CATEGORIES.each do |category| %>
+          <li><%= link_to "#{category}", apis_path(cat: "#{category}")%></li>
+        <% end %>
+      </ul>
+    </li>
+
+    <li class="has-form">
+      <div class="row collapse">
+        <div class="large-8 small-9 columns" >
+          <%= form_tag(apis_path, method: 'get', id: 'search-form') do %>
+            <%= text_field_tag :search, params[:search],
+              placeholder: 'Search', id: 'search-field' %>
       </div>
+
       <div class="large-4 small-3 columns" >
         <%= submit_tag 'Search', class: 'alert button expand' %>
-      <% end %> 
       </div>
+    <% end %> 
     </div>
   </li>
 </ul>
-<%# <li class="has-form"> %>
-<%#     <div style="width: 26%;text-align: right;"> %>
-<%#         <div class="large-8 small-9 columns"> %>
-<%#             <%= form_tag(apis_path, method: 'get', id: 'search-form') do %1> %>
-<%#               <%= text_field_tag :search, params[:search], %>
-<%#                 placeholder: 'Search', id: 'search-field' %1> %>
-<%#         </div> %>
-<%#       <div class="large-4 small-3 columns"> %>
-<%#         <% end %1> %> 
-<%#       </div> %>
-<%#     </div> %>
-<%# </li> %>
-

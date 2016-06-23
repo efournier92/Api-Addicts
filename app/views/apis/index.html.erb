@@ -1,42 +1,44 @@
-<% @apis_paginated = @apis.paginate(page: params[:page], per_page: 5) %>
-<% @apis_paginated.each do |api| %>
-  <div class="api_frame">
-    <div class="trending_api">
-      <div class="trending_api_info">
-        <div style="font-weight: 700;">
-          <%= link_to(api.name, api_path(api)) %> <br />
-        </div>
-        <div style="font-weight: 400;">
-          <%= link_to(api.url, api.url) %>
-        </div>
-        <span style="font-weight: 700;">Category:</span> <%= api.category %>
+<div class="index-container">
+  <% @apis_paginated = @apis.paginate(page: params[:page], per_page: 5) %>
+  <% @apis_paginated.each do |api| %>
+    <div class="api-frame">
+      <div class="trending-api">
+        <div class="trending-api-info">
+          <div style="font-weight: 700;">
+            <%= link_to(api.name, api_path(api)) %> <br />
+          </div>
+          <div style="font-weight: 400;">
+            <%= link_to(api.url, api.url) %>
+          </div>
+          <span style="font-weight: 700;">Category:</span> <%= api.category %>
       </div>
-      <div class="trending_api_rating">
-        <div class="rating_fill"></div>
+      <div class="trending-api-rating">
+        <div class="rating-fill"></div>
         <div class="rating">
-          <div class="rating_stars">
+          <div class="rating-stars">
             <% unless api.average_rating == 0 %>
               <%= api.print_stars(api.average_rating) %>
           </div>
-          <div class="rating_score">
+          <div class="rating-score">
             <%= "#{api.average_rating} Star Average" %>
-            <% else %>
-              <%= 'No Reviews' %>
-            <% end %>
+          <% else %>
+            <%= 'No Reviews' %>
+          <% end %>
           </div>
         </div>
       </div>
-      <div class="trending_api_review_button">
-        <div class="review_button_fill"></div>
+      <div class="trending-api-review-button">
+        <div class="review-button-fill"></div>
         Review
       </div>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<div class="pagination-centered pagination_links">
-<%= will_paginate @apis_paginated,
-  page_links: false,
-  next_label:     image_tag('arrow_next.png', size: '50'),
-  previous_label: image_tag('arrow_back.png', size: '50') %>
+  <div class="pagination-centered pagination-links">
+    <%= will_paginate @apis_paginated,
+      page_links: false,
+      next_label:     image_tag('arrow_next.png', size: '50'),
+      previous_label: image_tag('arrow_back.png', size: '50') %>
+  </div>
 </div>
