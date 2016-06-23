@@ -5,9 +5,6 @@ Rails.application.routes.draw do
 
   resources :apis, only: [:index, :show, :new, 
                           :create, :edit, :update, :destroy] do
-      member do
-        post 'random'
-      end
 
     resources :reviews, only: [:index, :new, 
                                :create, :edit, :update, :destroy] do
