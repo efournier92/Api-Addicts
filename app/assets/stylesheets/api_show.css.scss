@@ -7,10 +7,29 @@
   min-height: 20%;
 }
 
+.score {
+  font-size: 10px;
+  line-height: 10px;
+  text-align: center;
+}
+
 .review_container {
   width: 100%;
   background-color: #cacaca;
   margin-bottom: 15px;
+}
+
+.upvote_frame {
+  height: 100%;
+  min-width: 60px;
+  display: inline-block;
+  position: absolute;
+  left: 15px;
+}
+
+.upvote_body {
+  position: relative;
+  top: 10px;
 }
 
 .upvote {
@@ -20,14 +39,13 @@
 }
 
 .review_content {
+  max-width: 90%;
   display: inline-block;
-}
-
-.review_crud_buttons {
+  margin-left: 60px;
 }
 
 .review_body {
-  display: inline-block;
+  height: 100%;
 }
 
 .review {
@@ -37,11 +55,14 @@
 
 .api_description {
   background-color: #cacaca;
+  margin-top: 15px;
+  margin-bottom: 16px;
 }
 
 .posted_by {
   min-width: 100%;
   background-color: #cacaca;
+  margin-bottom: 15px;
 }
 
 .link a {
@@ -52,4 +73,27 @@
 .title {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.submit_button_dark {
+  height: 40px;
+  width: 110px;
+  font-size: 14px;
+  color: #FFFFFF;
+  background-color: #1e1e1e;
+  margin-bottom: 15px;
+}
+
+.review_crud_butt5ns {
+  height: 50px;
+}
+
+a.review_crud_button {
+  height: 40px;
+  width: 110px;
+  font-size: 14px;
+  color: #FFFFFF;
+  background-color: #008CBA;
+  margin: 0px 10px 15px 0px;
+  padding: 4px;
 }

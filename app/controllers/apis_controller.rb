@@ -14,7 +14,7 @@ class ApisController < ApplicationController
   def show
     @api        = Api.find(params[:id])
     @review     = Review.new
-    @reviews    = @api.reviews
+    @reviews    = @api.reviews.sort_by{ |r| r.votes.count }.reverse!
   end
 
   def edit

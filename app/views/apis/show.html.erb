@@ -21,15 +21,15 @@
   </div>
 
   <div class="review">
-    <h4>Review Now</h4>
+    <h3>Review Now</h3>
 
     <%= form_for [@api, @review] do |f| %>
       <%= f.collection_radio_buttons(:rating, [[1], [2], [3], [4], [5]], :first, :last) %>
       <%= f.text_area :body, rows: 8, value: @review.body %>
-      <%= f.submit 'Post Review' %>
+      <%= f.submit 'Post Review', class: 'submit_button_dark' %>
     <% end %>
 
-    <h4>Reviews</h4>
+    <h2>Reviews</h2>
     <% @reviews.each do |review|%>
       <div class="review_container">
         <% upvote_path   = upvote_api_review_path(@api, review).to_s %> 
@@ -37,22 +37,29 @@
         <% vote_score    = review.calculate_votes(review.id) %>
 
         <div class="review_body">
-        <div class="upvote">
-          <a id="up_vote" class="upvote" data-path="<%= upvote_path %>"></a>
-          <span class="count"><%= vote_score[:score] %></span>
-          <a id="down_vote" class="downvote" data-path="<%= downvote_path %>"></a>
+        <div class="upvote_frame">
+          <div class="upvote_body">
+            <div class="upvote">
+              <a id="up_vote" class="upvote" data-path="<%= upvote_path %>"></a>
+              <span class="count"><%= vote_score[:score] %></span>
+              <a id="down_vote" class="downvote" data-path="<%= downvote_path %>"></a>
+              <div class="score">
+                <%= vote_score[:total] %><br \>Total
+              </div>
+            </div>
+          </div>
         </div>
           <div class="review_content">
           <div class="review_crud_buttons">
             <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
-              <%= link_to 'Edit Review', edit_api_review_path(@api, review) %> 
+              <%= link_to 'Edit Review', edit_api_review_path(@api, review), class: 'review_crud_button' %> 
               <%= link_to 'Delete Review', api_review_path(@api, review),
-                method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
+                class: 'review_crud_button', method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
             <% end %>
           </div>
           
           <h5>
-            <%= "#{review.api.user.first_name} Says" %>
+            <%= "#{review.user.first_name} Says" %>
           </h5>
           
           <p>
