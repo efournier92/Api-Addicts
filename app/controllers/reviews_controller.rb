@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     api    = params[:api_id]
     review = params[:id]
     user   = current_user.id
-   Vote.create(api_id: api, user_id: user, review_id: review, up_vote?: true) 
+    Vote.create(api_id: api, user_id: user, review_id: review, up_vote?: true) 
     redirect_to(api_path(api))
   end
 
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     api    = params[:api_id]
     review = params[:id]
     user   = current_user.id
-   Vote.create(api_id: api, user_id: user, review_id: review, up_vote?: false) 
+    Vote.create(api_id: api, user_id: user, review_id: review, up_vote?: false) 
     redirect_to(api_path(api))
   end
 
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.api_id = @api.id
-    
+
     if @review.save
       flash[:success] = 'Review Submitted Successfully!'
     else
@@ -70,15 +70,6 @@ class ReviewsController < ApplicationController
       flash[:success] = "Review has been deleted"
       redirect_to apis_path
     end
-  end
-
-  def flip_vote(vote)
-    if vote.user_vote
-      vote.user_vote = false
-    else
-      vote.user_vote = true
-    end
-    vote.save
   end
 
   private

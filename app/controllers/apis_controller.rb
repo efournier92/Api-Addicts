@@ -12,9 +12,9 @@ class ApisController < ApplicationController
   end
 
   def show
-    @api        = Api.find(params[:id])
-    @review     = Review.new
-    @reviews    = @api.reviews.sort_by{ |r| r.votes.count }.reverse!
+    @api     = Api.find(params[:id])
+    @review  = Review.new
+    @reviews = @api.reviews.sort_by{ |r| r.votes.count }.reverse!
   end
 
   def edit
@@ -24,7 +24,6 @@ class ApisController < ApplicationController
   def new
     @api = Api.new
   end
-
 
   def create
     params[:api][:tags] = params[:api][:tags].split(',')

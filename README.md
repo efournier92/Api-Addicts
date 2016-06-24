@@ -1,50 +1,67 @@
-Api Addicts
-================
+#Api-Addicts
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+![Build Status](https://codeship.com/projects/8b992560-dcbb-0133-fcbe-2e9843291021/status?branch=master)
+![Code Climate](https://codeclimate.com/github/bmordas11/api-addicts.png)
+[![Coverage Status](https://coveralls.io/repos/github/bmordas11/api-addicts/badge.svg?branch=master)](https://coveralls.io/github/bmordas11/api-addicts?branch=master)
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+##Description
 
-Rails Composer is supported by developers who purchase our RailsApps tutorials.
+This is a site we built for users to post and review one of the driving force factors behind web innovation today: APIs.
 
-Problems? Issues?
------------
+The site allows users to create and account, post new APIs they know about, rate and review APIs posted by other users, and upvote/downvote listed APIs.
 
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
+##Authors
 
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
+* **Matt Thompson**
 
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
+* **Brett Mordas**
 
-Ruby on Rails
--------------
+* **Majid Ihsan**
 
-This application requires:
+* **Eric Fournier**
 
-- Ruby 2.3.0
-- Rails 4.2.6
+##Heroku Link
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
+###[Visit Website](http://api-addicts.herokuapp.com/)
 
-Getting Started
----------------
+##ER Diagram
 
-Documentation and Support
--------------------------
+![ER_Diagram](http://gdurl.com/FI7r)
 
-Issues
--------------
+##Features
 
-Similar Projects
-----------------
+* User signs up
 
-Contributing
-------------
+* User uploads a profile picture
 
-Credits
--------
+* User adds an API
 
-License
--------
+* User reviews existing API
+
+* User upvotes or downvotes API (user can only vote once)
+
+* API creater recieves email when someone reviews their API
+
+* Admin deletes content they deem innapopropriate
+
+* Admin deletes user account if they violate terms of use
+
+## Technologies Utilized
+
+* Rails
+
+* Ajax
+
+* JQuery
+
+* Devise (User Authentication)
+
+* CarrierWave (Photo Uploads)
+
+* Will_Paginate (Pagination)
+
+* Amazon S3 Service
+
+* Factory_Girl (Test Data)
+
+* Mailgun (ActionMailer)

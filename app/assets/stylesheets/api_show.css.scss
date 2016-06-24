@@ -38,6 +38,11 @@
   margin-right: 10px;
 }
 
+.review {
+  width: 100%;
+  min-height: 40%;
+}
+
 .review_content {
   max-width: 90%;
   display: inline-block;
@@ -46,11 +51,6 @@
 
 .review_body {
   height: 100%;
-}
-
-.review {
-  width: 100%;
-  min-height: 40%;
 }
 
 .api_description {
@@ -82,10 +82,6 @@
   color: #FFFFFF;
   background-color: #1e1e1e;
   margin-bottom: 15px;
-}
-
-.review_crud_butt5ns {
-  height: 50px;
 }
 
 a.review_crud_button {

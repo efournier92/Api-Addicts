@@ -21,5 +21,4 @@ class Review < ActiveRecord::Base
     downvotes = Vote.where(up_vote?: false, review: review_id).count
     { score: upvotes - downvotes, total: upvotes + downvotes }
   end
-
 end

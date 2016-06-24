@@ -13,7 +13,8 @@
     <%= f.label :category %>
     <%= f.select :category, options_for_select(Api::CATEGORIES) %>
     <%= f.label :free, 'Free to Use?'%>
-    <%= f.collection_radio_buttons(:free, [[true, 'Yes'], [false, 'No']], :first, :last) %> <br />
+    <%= f.collection_radio_buttons(:free, [[true, 'Yes'], [false, 'No']], 
+                                   :first, :last) %> <br />
     <div class="centered" style="margin-top: 10px;">
       <%= f.submit 'Add API', class: 'button' %>
     </div>

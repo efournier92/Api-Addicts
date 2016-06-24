@@ -2,12 +2,16 @@
 
   <div class="api_info">
     <% if @api.owner?(current_user) || current_user.try(:admin?) %>
-      <%= link_to 'Edit API', edit_api_path(@api), class: 'small button' %> <br />
-      <%= link_to 'Delete API', @api, method: :delete, class: 'small button', data: { confirm: 'Are You Sure You Want to Delete this API?' } %>
+      <%= link_to 'Edit API', edit_api_path(@api), 
+        class: 'small button' %> <br />
+        <%= link_to 'Delete API', @api, method: :delete, 
+          class: 'small button', 
+          data: { confirm: 'Are You Sure You Want to Delete this API?' } %>
     <% end %>
 
     <div class="posted_by">
-      <%= "Posted by #{@api.user.first_name} on #{@api.created_at.strftime("%m-%d-%Y")}" %>
+      <%= "Posted by #{@api.user.first_name} 
+      on #{@api.created_at.strftime("%m-%d-%Y")}" %>
     </div>
 
     <h4>
@@ -24,7 +28,8 @@
     <h3>Review Now</h3>
 
     <%= form_for [@api, @review] do |f| %>
-      <%= f.collection_radio_buttons(:rating, [[1], [2], [3], [4], [5]], :first, :last) %>
+      <%= f.collection_radio_buttons(:rating, [[1], [2], [3], [4], [5]], 
+                                     :first, :last) %>
       <%= f.text_area :body, rows: 8, value: @review.body %>
       <%= f.submit 'Post Review', class: 'submit_button_dark' %>
     <% end %>
@@ -40,9 +45,11 @@
         <div class="upvote_frame">
           <div class="upvote_body">
             <div class="upvote">
-              <a id="up_vote" class="upvote" data-path="<%= upvote_path %>"></a>
+              <a id="up_vote" class="upvote" 
+                              data-path="<%= upvote_path %>"></a>
               <span class="count"><%= vote_score[:score] %></span>
-              <a id="down_vote" class="downvote" data-path="<%= downvote_path %>"></a>
+              <a id="down_vote" class="downvote" 
+                                data-path="<%= downvote_path %>"></a>
               <div class="score">
                 <%= vote_score[:total] %><br \>Total
               </div>
@@ -51,27 +58,27 @@
         </div>
           <div class="review_content">
           <div class="review_crud_buttons">
-            <% if review.review_owner?(current_user) || current_user.try(:admin?) %>
-              <%= link_to 'Edit Review', edit_api_review_path(@api, review), class: 'review_crud_button' %> 
+            <% if review.review_owner?(current_user) || 
+                 current_user.try(:admin?) %>
+               <%= link_to 'Edit Review', edit_api_review_path(@api, review), 
+                 class: 'review_crud_button' %> 
               <%= link_to 'Delete Review', api_review_path(@api, review),
-                class: 'review_crud_button', method: :delete, data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
+                class: 'review_crud_button', method: :delete, 
+                data: {confirm: 'Are You Sure You Want to Delete this Review?'} %>
             <% end %>
-          </div>
-          
           <h5>
             <%= "#{review.user.first_name} Says" %>
           </h5>
-          
           <p>
-          <b>Rating:</b> <%= review.rating %> <br />
-          <b>Reason:</b> <%= review.body %>
+            <b>Rating:</b> <%= review.rating %> <br />
+            <b>Reason:</b> <%= review.body %>
           </p>
         </div>
         </div>
-
       </div>
     <% end %>
   </div>
 </div>
+
 <%= javascript_include_tag 'votes' %>
 <%= javascript_include_tag 'jquery-upvote' %>

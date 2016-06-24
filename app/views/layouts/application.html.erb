@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
+  <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900,100' rel='stylesheet' type='text/css'>
-		<title><%= content_for?(:title) ? yield(:title) : 'API Addicts' %></title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,900,100'
+      rel='stylesheet' type='text/css'>
+    <title><%= content_for?(:title) ? yield(:title) : 'API Addicts' %></title>
 
-		<%= stylesheet_link_tag    'application' %>
-		<%= javascript_include_tag 'application' %>
-		<%= javascript_include_tag 'vendor/modernizr' %>
-		<%= javascript_include_tag 'categories' %>
-		<%= javascript_include_tag 'votes' %>
-		<%= csrf_meta_tags %>
-	</head>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'categories' %>
+    <%= javascript_include_tag 'votes' %>
+    <%= csrf_meta_tags %>
+  </head>
 
   <body>
 
-		<div class="topper">
-			<%= render 'layouts/topper' %>
-		</div>
+    <div class="topper">
+      <%= render 'layouts/topper' %>
+    </div>
 
-		<nav class="top-bar" data-topbar>
-			<div class="top-bar-section">
-				<ul>
-					<%= render 'layouts/navigation_links' %>
-				</ul>
-			</div>
-		</nav>
+    <nav class="top-bar" data-topbar>
+      <div class="top-bar-section">
+        <ul>
+          <%= render 'layouts/navigation_links' %>
+        </ul>
+      </div>
+    </nav>
 
-		<% unless flash.keys[0] == nil %>
-			<div data-alert class="alert-box">
-				<% flash.each do |key, value| %>
-					<%= content_tag(:div, value, class: "flash #{key}") %>
-				<% end %>
-			</div>
-		<% end %>
+    <% unless flash.keys[0] == nil %>
+      <div data-alert class="alert-box">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "flash #{key}") %>
+        <% end %>
+      </div>
+    <% end %>
 
-		<%= yield %>
+    <%= yield %>
 
-	</body>
+  </body>
 </html>
