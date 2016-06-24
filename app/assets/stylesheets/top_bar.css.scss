@@ -21,12 +21,19 @@ a.alert.button.expand {
   max-width: 75px !important;
 }
 
+.has-dropdown.not-click a {
+  min-width: 136px;
+}
+
+.has-dropdown.not-click a:hover {
+  background-color: #042c3b !important;
+}
+
 li.has-form {
   padding: 0px !important;
 }
 
 .top-bar a:hover {
-  background-color: #042c3b !important;
 }
 
 .top-bar-section ul li a {
