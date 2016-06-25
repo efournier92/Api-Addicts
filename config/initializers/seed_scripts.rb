@@ -5,7 +5,7 @@ module SeedScripts
   TOTAL_REVIEWS = Review.all.count - 1
 
   def self.review_apis
-    6.times do
+    2.times do
       review = SeedData::REVIEWS.sample
       Review.create(
         body:    review[:reason],
@@ -17,7 +17,7 @@ module SeedScripts
   end
 
   def self.upvote_reviews
-    10.times do
+    4.times do
       Vote.create(
         user_id:   rand(1..TOTAL_USERS),
         api_id:    rand(1..TOTAL_APIS),
@@ -29,7 +29,7 @@ module SeedScripts
 
   def self.cleanup_oldest_reviews
     unless Review.all.count < 200
-      5.times do
+      2.times do
         Review.all.sample.destroy
       end
     end
