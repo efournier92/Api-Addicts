@@ -18,10 +18,13 @@ module SeedScripts
 
   def self.upvote_reviews
     4.times do
+      review_id = rand(1..TOTAL_REVIEWS)
+      review    = Review.find(review_id)
+      api       = review.api.id
       Vote.create(
         user_id:   rand(1..TOTAL_USERS),
-        api_id:    rand(1..TOTAL_APIS),
-        review_id: rand(1..TOTAL_REVIEWS),
+        api_id:    api,
+        review_id: review_id, 
         up_vote?:  [true, false].sample
       )
     end
