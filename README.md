@@ -12,17 +12,17 @@ The site allows users to create and account, post new APIs they know about, rate
 
 ##Authors
 
+* **Eric Fournier**
+
 * **Matt Thompson**
 
 * **Brett Mordas**
 
 * **Majid Ihsan**
 
-* **Eric Fournier**
+##Production Deployment
 
-##Heroku Link
-
-###[Visit Website](http://api-addicts.herokuapp.com/)
+###[Visit Website](http://api-addicts.me/)
 
 ##ER Diagram
 
