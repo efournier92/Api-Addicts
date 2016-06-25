@@ -3,6 +3,14 @@
   width: 100%;
 }
 
+.index-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: center;
+  text-decoration: underline;
+}
+
 .api-frame {
   width: 100%;
   margin-right: auto;
@@ -13,7 +21,7 @@
   width: 95%;
   height: 85px;
   background-color: #5799b1;
-  margin: 1.5% auto 1.5% auto;
+  margin: 12px auto 12px auto;
   border-radius: 45px;
   display: flex;
   white-space: nowrap; 

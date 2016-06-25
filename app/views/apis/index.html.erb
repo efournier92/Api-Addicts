@@ -1,4 +1,9 @@
+<% require 'will_paginate/array' %>
+
 <div class="index-container">
+    <div class="index-title">
+      <%= @title %>
+    </div>
   <% @apis_paginated = @apis.paginate(page: params[:page], per_page: 5) %>
   <% @apis_paginated.each do |api| %>
     <div class="api-frame">

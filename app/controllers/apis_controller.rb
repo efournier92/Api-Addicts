@@ -3,11 +3,19 @@ class ApisController < ApplicationController
 
   def index
     if params[:search]
-      @apis = Api.search(params[:search])
+      @apis  = Api.search(params[:search])
+      @title = 'Search Results'
     elsif params[:cat] != nil
-      @apis = Api.where(category: params[:cat])
+      @apis  = Api.where(category: params[:cat])
+      @title = params[:cat]
     else
-      @apis = Api.all.order('created_at DESC')
+      trending_reviews = Review.all.sort_by{|r| r.created_at}.reverse.first(20)
+      trending_apis    = []
+      trending_reviews.each do |review|
+        trending_apis << review.api
+      end
+      @apis  = trending_apis 
+      @title = 'Trending'
     end
   end
 
