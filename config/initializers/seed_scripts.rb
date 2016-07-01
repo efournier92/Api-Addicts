@@ -5,7 +5,7 @@ module SeedScripts
   TOTAL_REVIEWS = Review.all.count - 1
 
   def self.review_apis
-    2.times do
+    rand(0..1).times do
       review = SeedData::REVIEWS.sample
       Review.create(
         body:    review[:reason],
@@ -17,7 +17,7 @@ module SeedScripts
   end
 
   def self.upvote_reviews
-    4.times do
+    8.times do
       review_id = rand(1..TOTAL_REVIEWS)
       review    = Review.find(review_id)
       api       = review.api.id

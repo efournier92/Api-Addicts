@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :api
-  has_many   :votes
+  has_many   :votes, dependent: :destroy
 
   validates :body, presence: true
   validates :rating, inclusion: {in: [1, 2, 3, 4, 5]}
